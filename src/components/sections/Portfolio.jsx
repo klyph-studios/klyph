@@ -7,7 +7,7 @@ export function Portfolio({ projects, onOpenModal }) {
   const visible = filter === "All" ? projects : projects.filter((p) => p.cat === filter);
 
   return (
-    <section id="work" className="section" style={{ background: "var(--bg2)" }}>
+    <section id="work" className="section sec-light">
       <div className="container">
         <div
           style={{

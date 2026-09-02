@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function Navbar() {
+export function Navbar({ theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobOpen, setMobOpen] = useState(false);
 
@@ -28,8 +28,7 @@ export function Navbar() {
       <nav className={`nav${scrolled ? " scrolled" : ""}`}>
         <div className="nav-inner">
           <div className="logo" onClick={() => go("home")}>
-            Brand<span className="logo-x">X</span>
-            <span className="logo-dot" />
+            KLYPH<span className="logo-dot" />
           </div>
           <ul className="nav-links">
             {links.map(([id, label]) => (
@@ -38,9 +37,16 @@ export function Navbar() {
               </li>
             ))}
           </ul>
-          <button className="btn btn-primary nav-cta" onClick={() => go("cta")}>
-            Book a Call
-          </button>
+          
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <button className="theme-toggle-btn" onClick={onToggleTheme} title="Press ESC anywhere to toggle background color">
+              <span>ESC</span>
+              <span>{theme === "dark" ? "☀️ Light" : "🌙 Dark"}</span>
+            </button>
+            <button className="btn btn-primary nav-cta" onClick={() => go("cta")}>
+              Book Consultation
+            </button>
+          </div>
           <button className="ham" onClick={() => setMobOpen(true)}>
             <span />
             <span />

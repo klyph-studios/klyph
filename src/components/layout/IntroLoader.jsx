@@ -23,10 +23,10 @@ export function IntroLoader() {
       <div className="intro-b1" />
       <div className="intro-b2" />
       <div className={`intro-name${show ? " show" : ""}`}>
-        Brand<span className="bx">X</span>
+        KLYPH
       </div>
       <div className={`intro-sub${show ? " show" : ""}`}>
-        <span>Digital Growth Agency</span>
+        <span>Ultra-Premium Digital Studio</span>
       </div>
       <div className={`intro-hint${show ? " show" : ""}`}>
         <span>Scroll to enter</span>

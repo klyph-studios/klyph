@@ -8,7 +8,7 @@ export function AiSolutions({ data }) {
   };
 
   return (
-    <section id="ai" className="section">
+    <section id="ai" className="section sec-dark">
       <div className="container">
         <div style={{ textAlign: "center", marginBottom: "4rem" }}>
           <div className="section-tag reveal" style={{ justifyContent: "center" }}>

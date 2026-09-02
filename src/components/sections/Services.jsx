@@ -1,6 +1,6 @@
 export function Services({ services }) {
   return (
-    <section id="services" className="section" style={{ background: "var(--bg2)" }}>
+    <section id="services" className="section sec-light">
       <div className="container">
         <div
           style={{
@@ -19,7 +19,7 @@ export function Services({ services }) {
             </h2>
           </div>
           <p className="reveal" style={{ color: "var(--muted)", maxWidth: "340px", lineHeight: 1.7, fontSize: ".95rem" }}>
-            From your website to your content pipeline and AI systems — BrandX handles the full stack of your digital presence.
+            From your website to your content pipeline and AI systems — Klyph handles the full stack of your digital presence.
           </p>
         </div>
         <div className="svc-grid">

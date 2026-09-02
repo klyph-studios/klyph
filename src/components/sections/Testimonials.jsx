@@ -2,7 +2,7 @@ export function Testimonials({ testimonials }) {
   const doubled = [...testimonials, ...testimonials];
 
   return (
-    <section id="testimonials" className="section" style={{ background: "var(--bg)", overflow: "hidden" }}>
+    <section id="testimonials" className="section sec-dark" style={{ overflow: "hidden" }}>
       <div className="container">
         <div style={{ textAlign: "center", marginBottom: "4rem" }}>
           <div className="section-tag reveal" style={{ justifyContent: "center" }}>

@@ -21,8 +21,30 @@ import { CTA } from "./components/sections/CTA";
 export default function App() {
   const [data] = useState(loadData);
   const [modalProjectId, setModalProjectId] = useState(null);
+  const [theme, setTheme] = useState("dark");
 
   useScrollReveal();
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        // If modal is open, let modal handle escape first or toggle theme if no modal
+        if (!modalProjectId) {
+          toggleTheme();
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [modalProjectId]);
 
   const modalProject = data.projects.find((p) => p.id === modalProjectId) || null;
 
@@ -38,7 +60,7 @@ export default function App() {
     <>
       <Cursor />
       <IntroLoader />
-      <Navbar />
+      <Navbar theme={theme} onToggleTheme={toggleTheme} />
 
       <main>
         <Hero data={data} />

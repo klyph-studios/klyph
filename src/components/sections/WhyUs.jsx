@@ -1,7 +1,7 @@
 export function WhyUs({ data }) {
   const go = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   const w = data?.whyUs || {
-    tag: "Why BrandX",
+    tag: "Why Klyph",
     headline1: "We Don't Just Deliver Work —",
     headline2: "We Deliver Results",
     sub: "We're not a typical agency. Every strategy, every pixel, and every automation we build is obsessed with one thing: making your numbers grow.",
@@ -9,7 +9,7 @@ export function WhyUs({ data }) {
   };
 
   return (
-    <section id="about" className="section" style={{ background: "var(--bg2)" }}>
+    <section id="about" className="section sec-dark">
       <div className="container">
         <div className="why-layout">
           <div>

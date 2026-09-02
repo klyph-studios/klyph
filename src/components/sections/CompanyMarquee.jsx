@@ -3,7 +3,7 @@ export function CompanyMarquee({ companies }) {
   const doubled = [...companies, ...companies];
 
   return (
-    <section className="section" style={{ background: "var(--bg)", overflow: "hidden", paddingTop: "4rem", paddingBottom: "4rem" }}>
+    <section className="section sec-light" style={{ overflow: "hidden", paddingTop: "4rem", paddingBottom: "4rem" }}>
       <div className="container" style={{ marginBottom: "2rem", textAlign: "center" }}>
         <p style={{ fontFamily: "var(--fd)", fontSize: ".78rem", fontWeight: 700, color: "var(--muted2)", letterSpacing: ".2em", textTransform: "uppercase" }}>
           Trusted by industry leaders

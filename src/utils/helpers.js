@@ -2,7 +2,7 @@ import { DEFAULT_DATA } from "../data/defaultData";
 
 export function loadData() {
   try {
-    const s = localStorage.getItem("brandx_v4");
+    const s = localStorage.getItem("klyph_v1");
     return s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULT_DATA));
   } catch {
     return JSON.parse(JSON.stringify(DEFAULT_DATA));
@@ -10,7 +10,7 @@ export function loadData() {
 }
 
 export async function saveData(d) {
-  localStorage.setItem("brandx_v4", JSON.stringify(d));
+  localStorage.setItem("klyph_v1", JSON.stringify(d));
   try {
     const res = await fetch("/api/save-data", {
       method: "POST",
