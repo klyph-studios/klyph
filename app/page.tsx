@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { IntroLoader } from "@/components/layout/IntroLoader";
 import { Hero } from "@/components/sections/Hero";
+import { ScrollSequence } from "@/components/sections/ScrollSequence";
 import { Marquee } from "@/components/sections/Marquee";
 import { Services } from "@/components/sections/Services";
 import { AiSolutions } from "@/components/sections/AiSolutions";
@@ -51,6 +52,7 @@ export default function Home() {
       
       <Hero />
       <Marquee />
+      <ScrollSequence />
       <Services />
       <AiSolutions />
       <Portfolio onOpenModal={(id) => setSelectedProjectId(id)} />

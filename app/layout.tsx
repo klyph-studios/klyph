@@ -1,6 +1,21 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/animations/SmoothScroll";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Klyph — Ultra-Premium Digital Studio",
@@ -13,16 +28,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="dark">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>
+    <html lang="en" data-theme="dark" className={`${outfit.variable} ${plusJakarta.variable}`}>
+      <body className="antialiased selection:bg-white selection:text-black">
         {/* Lenis Smooth Scroll & GSAP Synchronization Wrapper */}
         <SmoothScroll>
           {children}

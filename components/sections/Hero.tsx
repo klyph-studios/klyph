@@ -167,32 +167,32 @@ export function Hero() {
         {/* Dedicated Responsive GSAP ScrollTrigger KLYPH Kinetic Reveal Banner */}
         <div className="klyph-reveal-wrapper mt-20 pt-16 pb-12 border-t border-b border-white/10 bg-radial from-white/5 to-transparent w-full overflow-hidden">
           <div className="klyph-reveal-container flex flex-col items-center justify-center text-center relative w-full">
-            <div className="klyph-reveal-tag font-syne text-xs font-bold tracking-[0.3em] uppercase text-zinc-400 mb-6 flex items-center gap-3">
+            <div className="klyph-reveal-tag font-heading text-xs font-bold tracking-[0.3em] uppercase text-zinc-300 mb-6 flex items-center gap-3">
               KLYPH REVEAL // GSAP + SCROLLTRIGGER
             </div>
 
             <div className="klyph-reveal-title-box relative inline-block select-none w-full overflow-hidden" ref={titleBoxRef}>
               {/* Outline Typography */}
-              <div className="klyph-reveal-text outline font-syne font-extrabold text-[clamp(2.8rem,13vw,12rem)] leading-none uppercase tracking-widest text-transparent [webkit-text-stroke:1.5px_rgba(255,255,255,0.2)]">
+              <div className="klyph-reveal-text outline font-heading font-black text-[clamp(3.5rem,14vw,12.5rem)] leading-none uppercase tracking-widest text-transparent [webkit-text-stroke:2px_rgba(255,255,255,0.35)]">
                 KLYPH
               </div>
 
               {/* Solid Fill Revealed by GSAP ScrollTrigger */}
               <div
-                className="klyph-reveal-text fill absolute inset-0 font-syne font-extrabold text-[clamp(2.8rem,13vw,12rem)] leading-none uppercase tracking-widest bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent"
+                className="klyph-reveal-text fill absolute inset-0 font-heading font-black text-[clamp(3.5rem,14vw,12.5rem)] leading-none uppercase tracking-widest bg-gradient-to-b from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent"
                 ref={fillTextRef}
-                style={{ clipPath: "polygon(0% 0%, 20% 0%, 20% 100%, 0% 100%)" }}
+                style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" }}
               >
                 KLYPH
               </div>
             </div>
 
-            <div className="klyph-reveal-sub flex items-center justify-center gap-4 mt-8 opacity-40 transition-opacity" ref={subTextRef}>
-              <span className="sub-line w-16 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-              <span className="sub-text font-syne text-xs sm:text-sm font-bold tracking-[0.3em] text-zinc-400 uppercase">
+            <div className="klyph-reveal-sub flex items-center justify-center gap-4 mt-8 opacity-90 transition-opacity" ref={subTextRef}>
+              <span className="sub-line w-16 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+              <span className="sub-text font-heading text-xs sm:text-sm font-bold tracking-[0.25em] text-zinc-200 uppercase">
                 ULTRA-PREMIUM DIGITAL STUDIO
               </span>
-              <span className="sub-line w-16 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+              <span className="sub-line w-16 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent" />
             </div>
           </div>
         </div>

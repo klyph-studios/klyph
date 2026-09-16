@@ -23,8 +23,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        syne: ["Syne", "sans-serif"],
-        sans: ["Plus Jakarta Sans", "sans-serif"],
+        heading: ["var(--font-heading)", "Outfit", "system-ui", "sans-serif"],
+        syne: ["var(--font-heading)", "Outfit", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "Plus Jakarta Sans", "system-ui", "sans-serif"],
       },
       animation: {
         "spin-slow": "spin 25s linear infinite",

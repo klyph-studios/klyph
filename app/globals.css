@@ -43,8 +43,8 @@
     --muted-light: #52525b;
     --border-light: rgba(0, 0, 0, 0.08);
 
-    --fd: 'Syne', sans-serif;
-    --fb: 'Plus Jakarta Sans', sans-serif;
+    --fd: var(--font-heading), 'Outfit', sans-serif;
+    --fb: var(--font-sans), 'Plus Jakarta Sans', sans-serif;
   }
 
   body {
@@ -52,6 +52,9 @@
     color: #ffffff;
     font-family: var(--fb);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     transition: background-color 0.5s ease, color 0.5s ease;
   }
 }
