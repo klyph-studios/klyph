@@ -7,8 +7,9 @@ export function Footer({ data }) {
       <div className="container">
         <div className="foot-grid">
           <div>
-            <div className="logo" style={{ marginBottom: "1.2rem" }} onClick={() => go("home")}>
-              KLYPH<span className="logo-dot" />
+            <div className="logo" style={{ marginBottom: "1.2rem", display: "flex", alignItems: "center", gap: "10px" }} onClick={() => go("home")}>
+              <img src="/logo_icon_white.png" alt="klyph logo" style={{ height: "30px", width: "auto" }} />
+              <span>klyph</span><span className="logo-dot" />
             </div>
             <p className="foot-desc">{f.tagline}</p>
             <div className="socials">

@@ -27,8 +27,9 @@ export function Navbar({ theme, onToggleTheme }) {
     <>
       <nav className={`nav${scrolled ? " scrolled" : ""}`}>
         <div className="nav-inner">
-          <div className="logo" onClick={() => go("home")}>
-            KLYPH<span className="logo-dot" />
+          <div className="logo" onClick={() => go("home")} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <img src="/logo_icon_white.png" alt="klyph logo" style={{ height: "26px", width: "auto" }} />
+            <span>klyph</span><span className="logo-dot" />
           </div>
           <ul className="nav-links">
             {links.map(([id, label]) => (
@@ -39,10 +40,6 @@ export function Navbar({ theme, onToggleTheme }) {
           </ul>
           
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <button className="theme-toggle-btn" onClick={onToggleTheme} title="Press ESC anywhere to toggle background color">
-              <span>ESC</span>
-              <span>{theme === "dark" ? "☀️ Light" : "🌙 Dark"}</span>
-            </button>
             <button className="btn btn-primary nav-cta" onClick={() => go("cta")}>
               Book Consultation
             </button>

@@ -10,9 +10,19 @@ export function Footer() {
       <div className="container mx-auto px-8 max-w-[1240px]">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-16 border-b border-white/10">
           <div className="md:col-span-2">
-            <div className="font-syne font-extrabold text-3xl text-white tracking-tighter mb-4 flex items-center gap-1">
-              KLYPH
-              <span className="w-2 h-2 rounded-full bg-white mb-1" />
+            <div
+              className="mb-4 flex items-center gap-3 cursor-pointer group w-fit"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              <img
+                src="/logo_icon_white.png"
+                alt="klyph logo"
+                className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+              <span className="font-syne font-extrabold text-3xl text-white tracking-tighter flex items-center">
+                klyph
+                <span className="w-2 h-2 rounded-full bg-white ml-1 mb-1" />
+              </span>
             </div>
             <p className="text-zinc-400 text-sm leading-relaxed max-w-sm mb-6">{f.tagline}</p>
             <div className="text-xs text-zinc-500 font-syne font-semibold tracking-wider">
@@ -33,10 +43,15 @@ export function Footer() {
 
           <div>
             <h4 className="font-syne font-bold text-xs uppercase tracking-[0.2em] text-zinc-400 mb-6">Direct Contact</h4>
-            <div className="text-sm text-zinc-300 font-semibold mb-2">{f.email}</div>
-            <div className="text-xs text-zinc-400 mb-6">{f.phone}</div>
-            <div className="text-[11px] text-zinc-500 uppercase tracking-widest">
-              ESC Key → Toggle B&W Color Mode
+            <div className="text-sm text-zinc-300 font-semibold mb-2">
+              <a href={`mailto:${f.email}`} className="hover:text-white transition-colors underline-offset-4 hover:underline">
+                {f.email}
+              </a>
+            </div>
+            <div className="text-xs text-zinc-400">
+              <a href={`tel:${f.phone.replace(/[^+\d]/g, '')}`} className="hover:text-white transition-colors underline-offset-4 hover:underline">
+                {f.phone}
+              </a>
             </div>
           </div>
         </div>

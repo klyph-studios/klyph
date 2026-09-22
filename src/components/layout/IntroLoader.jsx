@@ -22,14 +22,14 @@ export function IntroLoader() {
       <div className="intro-grid" />
       <div className="intro-b1" />
       <div className="intro-b2" />
-      <div className={`intro-name${show ? " show" : ""}`}>
-        KLYPH
+      <div className={`intro-name${show ? " show" : ""}`} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
+        <img src="/logo_white.png" alt="klyph" style={{ height: "72px", width: "auto" }} />
       </div>
       <div className={`intro-sub${show ? " show" : ""}`}>
         <span>Ultra-Premium Digital Studio</span>
       </div>
       <div className={`intro-hint${show ? " show" : ""}`}>
-        <span>Scroll to enter</span>
+       
         <div className="scroll-line" />
       </div>
     </div>

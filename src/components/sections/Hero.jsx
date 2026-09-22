@@ -73,10 +73,9 @@ export function Hero({ data }) {
               <div className="oring r3">
                 <div className="rdot" />
               </div>
-              <div className="orb">
-                <div className="orb-brand">
-                  KLYPH
-                </div>
+              <div className="orb" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "6px" }}>
+                <img src="/logo_icon_white.png" alt="klyph" style={{ height: "36px", width: "auto" }} />
+                <div className="orb-brand">klyph</div>
                 <div className="orb-sub">Bespoke Studio</div>
               </div>
             </div>
@@ -107,8 +106,6 @@ export function Hero({ data }) {
         {/* Dedicated Full-Width KLYPH Kinetic Scroll Reveal Banner */}
         <div className="klyph-reveal-wrapper">
           <div className="klyph-reveal-container">
-            <div className="klyph-reveal-tag">KLYPH REVEAL // MOTION ARCHITECTURE</div>
-            
             <div 
               className="klyph-reveal-title-box"
               style={{

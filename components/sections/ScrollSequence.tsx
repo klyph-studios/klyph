@@ -180,25 +180,14 @@ export function ScrollSequence({
       <div className="relative z-10 w-full max-w-[1240px] mx-auto px-8 pt-24 sm:pt-28 flex flex-wrap justify-between items-center gap-4">
         <div>
           <div className="flex items-center gap-3 font-heading text-xs font-bold tracking-[0.25em] uppercase text-zinc-300">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-white/70 animate-pulse" />
             <span>KLYPH Kinetic Sequence</span>
             <span className="text-zinc-500">//</span>
-            <span className="text-zinc-200">Scroll-Controlled Engine</span>
+            <span className="text-zinc-400">Scroll-Controlled Engine</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-heading font-extrabold tracking-tight mt-1.5 bg-gradient-to-r from-white via-zinc-100 to-zinc-300 bg-clip-text text-transparent">
             Precision Brand Fluidity
           </h2>
-        </div>
-
-        {/* Frame & Progress Counter Badge */}
-        <div className="flex items-center gap-3 bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 rounded-full">
-          <div className="text-xs font-mono tracking-widest text-zinc-300 uppercase">
-            Frame <span className="text-white font-bold">{String(currentFrameIndex).padStart(2, "0")}</span> / {frameCount}
-          </div>
-          <span className="w-1 h-3 bg-white/30" />
-          <div className="text-xs font-mono font-semibold text-white">
-            {progressPercent}%
-          </div>
         </div>
       </div>
 
@@ -213,7 +202,7 @@ export function ScrollSequence({
           <div className="absolute z-20 flex flex-col items-center gap-3 bg-black/90 backdrop-blur-md px-6 py-4 rounded-xl border border-white/20">
             <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
             <div className="text-xs font-mono text-zinc-200 tracking-wider">
-              Caching Frames: {loadedCount}/{frameCount}
+              Loading Animation...
             </div>
           </div>
         )}
@@ -223,68 +212,12 @@ export function ScrollSequence({
           ref={canvasRef}
           className="relative z-10 w-full max-w-[620px] max-h-[65vh] object-contain cursor-grab active:cursor-grabbing drop-shadow-[0_20px_50px_rgba(255,255,255,0.07)]"
         />
-
-        {/* Dynamic Storytelling Text Annotations appearing at scroll milestones */}
-        <div
-          className={`absolute left-8 lg:left-16 bottom-24 max-w-xs transition-all duration-700 pointer-events-none bg-black/60 backdrop-blur-md p-4 rounded-xl border border-white/10 ${
-            scrollProgress > 0.05 && scrollProgress < 0.45
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-4"
-          }`}
-        >
-          <div className="text-[11px] font-mono tracking-widest text-zinc-300 uppercase mb-1 font-semibold">
-            Phase 01 // Origin
-          </div>
-          <h3 className="font-heading font-bold text-lg text-white mb-1.5">
-            Dynamic Monogram Genesis
-          </h3>
-          <p className="text-xs font-sans text-zinc-200 leading-relaxed font-normal">
-            Scroll down to watch the form expand through calibrated vector geometry.
-          </p>
-        </div>
-
-        <div
-          className={`absolute right-8 lg:right-16 bottom-24 max-w-xs text-right transition-all duration-700 pointer-events-none bg-black/60 backdrop-blur-md p-4 rounded-xl border border-white/10 ${
-            scrollProgress >= 0.45 && scrollProgress < 0.85
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-4"
-          }`}
-        >
-          <div className="text-[11px] font-mono tracking-widest text-zinc-300 uppercase mb-1 font-semibold">
-            Phase 02 // Resonance
-          </div>
-          <h3 className="font-heading font-bold text-lg text-white mb-1.5">
-            Acoustic & Light Radiation
-          </h3>
-          <p className="text-xs font-sans text-zinc-200 leading-relaxed font-normal">
-            Synchronized harmonic waves pulsate as the user controls the timeline.
-          </p>
-        </div>
-
-        <div
-          className={`absolute left-1/2 -translate-x-1/2 bottom-20 text-center transition-all duration-700 pointer-events-none bg-black/70 backdrop-blur-md px-6 py-4 rounded-xl border border-white/10 ${
-            scrollProgress >= 0.85
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-4"
-          }`}
-        >
-          <div className="text-[11px] font-mono tracking-widest text-emerald-400 uppercase mb-1 font-semibold">
-            Phase 03 // Resolution
-          </div>
-          <h3 className="font-heading font-bold text-xl text-white mb-1">
-            Identity Unified
-          </h3>
-          <p className="text-xs font-sans text-zinc-200">
-            Scroll further to continue exploring the studio portfolio.
-          </p>
-        </div>
       </div>
 
       {/* Bottom Progress Bar and Prompt */}
       <div className="relative z-10 w-full max-w-[1240px] mx-auto px-8 pb-8">
         <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-2">
           <span>↓ Scroll to scrub animation</span>
-          <span>{currentFrameIndex === frameCount ? "Complete" : "Interactive Scrub"}</span>
         </div>
         <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
           <div

@@ -27,9 +27,12 @@ export function IntroLoader() {
 
   return (
     <div className="fixed inset-0 z-[100] bg-black text-white flex flex-col items-center justify-center transition-opacity duration-700">
-      <div className="font-syne font-extrabold text-5xl tracking-tight mb-4 flex items-center gap-2">
-        KLYPH
-        <span className="w-3 h-3 rounded-full bg-white animate-pulse" />
+      <div className="mb-6 flex flex-col items-center">
+        <img
+          src="/logo_white.png"
+          alt="klyph"
+          className="w-28 h-auto object-contain mb-3 drop-shadow-[0_0_25px_rgba(255,255,255,0.2)] animate-pulse"
+        />
       </div>
       <div className="text-xs font-syne font-bold text-zinc-400 tracking-[0.3em] uppercase mb-8">
         ULTRA-PREMIUM DIGITAL STUDIO
