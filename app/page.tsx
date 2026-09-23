@@ -8,6 +8,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Marquee } from "@/components/sections/Marquee";
 import { Services } from "@/components/sections/Services";
 import { AiSolutions } from "@/components/sections/AiSolutions";
+import { WhatWeOffer } from "@/components/sections/WhatWeOffer";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { CompanyMarquee } from "@/components/sections/CompanyMarquee";
@@ -32,6 +33,7 @@ export default function Home() {
       <Hero />
       <Marquee />
       <Services onOpenModal={(id) => setSelectedProjectId(id)} />
+      <WhatWeOffer />
       <AiSolutions />
       <Portfolio onOpenModal={(id) => setSelectedProjectId(id)} />
       <Testimonials />
