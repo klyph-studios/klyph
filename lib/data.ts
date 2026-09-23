@@ -63,6 +63,7 @@ export const KLYPH_DATA = {
     "The Happy Beaks Sanctuary",
     "Crystal Clear Academy",
     "AJL Windows & Doors",
+    "Edwin Chater Account — CA Firm",
     "Next.js App Router",
     "GSAP Motion Systems"
   ],
@@ -173,6 +174,17 @@ export const KLYPH_DATA = {
       results: "2.8x Project Inquiries, High-Value Architect Specs, Interactive Catalog",
       liveUrl: "https://ajl-windows-demo.netlify.app/"
     },
+    { 
+      id: "p10", 
+      name: "Edwin Chater Account — CA Firm", 
+      cat: "Finance & Accounting", 
+      tags: "CA Firm, Chartered Accountant, Finance, Tax Advisory", 
+      emoji: "📊", 
+      bg: "bg-klyph-dark-4", 
+      desc: "Professional digital presence for Edwin Chater Account, a premier chartered accountancy firm offering taxation, audit, GST compliance, and financial advisory services.", 
+      results: "3.1x Client Inquiries, Credibility-First Design, Fast Compliance Portal",
+      liveUrl: "https://www.caedwin.in/"
+    },
   ] as ProjectItem[],
   testimonials: [
     { id: "t1", quote: "Klyph built our construction portal to perfection. Commercial bids and client inquiries have grown exponentially since launch.", author: "SMN Executive Board", role: "Leadership, SMN Construction", init: "SM", stars: 5, cat: "Construction" },
@@ -180,6 +192,7 @@ export const KLYPH_DATA = {
     { id: "t3", quote: "The VIP booking flow for Enlite Helicopters is ultra-sleek and flawless. Our private charter reservations surged instantly.", author: "Aviation Operations", role: "Director, Enlite Helicopters", init: "EH", stars: 5, cat: "Aviation" },
     { id: "t4", quote: "Direct reservations for Veera Residency went through the roof. The speed, aesthetics, and mobile booking feel 5-star.", author: "Veera Management", role: "Director, Veera Groups of Hotel", init: "VM", stars: 5, cat: "Hospitality" },
     { id: "t5", quote: "Our studio sessions are booked solid weeks in advance. The dark, minimalist gallery style Klyph designed for Black Lens is world-class.", author: "Karthik R.", role: "Lead Photographer, Black Lens Studio", init: "KR", stars: 5, cat: "Photo Studio" },
+    { id: "t6", quote: "Our CA firm now has a professional online presence that instantly builds trust with clients. Klyph delivered a clean, credible, and fast website that reflects our expertise.", author: "Edwin Chater", role: "Principal Chartered Accountant, Edwin Chater Account", init: "EC", stars: 5, cat: "Finance" },
   ] as TestimonialItem[],
   companies: [
     { id: "c1", name: "SMN Construction", init: "SM" },
@@ -191,6 +204,7 @@ export const KLYPH_DATA = {
     { id: "c7", name: "The Happy Beaks", init: "HB" },
     { id: "c8", name: "Crystal Clear Academy", init: "CA" },
     { id: "c9", name: "AJL Windows", init: "AW" },
+    { id: "c10", name: "Edwin Chater Account", init: "EC" },
   ] as CompanyItem[],
   cta: {
     line1: "Ready to Transform",
