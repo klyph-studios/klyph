@@ -1,11 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@/hooks/useGSAP";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
   {
@@ -84,7 +82,8 @@ export function WhatWeOffer() {
           "-=0.2"
         );
     },
-    { scope: sectionRef }
+    [],
+    sectionRef
   );
 
   const scrollToContact = () => {
