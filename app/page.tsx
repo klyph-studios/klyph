@@ -5,7 +5,9 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { CompanyMarquee } from "@/components/sections/CompanyMarquee";
+import { Portfolio } from "@/components/sections/Portfolio";
 import { AgentShowcase } from "@/components/sections/AgentShowcase";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { ScaleBento } from "@/components/sections/ScaleBento";
 import { CTA } from "@/components/sections/CTA";
 
@@ -15,7 +17,9 @@ export default function Home() {
       <Navbar />
       <Hero />
       <CompanyMarquee />
+      <Portfolio />
       <AgentShowcase />
+      <Testimonials />
       <ScaleBento />
       <CTA />
       <Footer />

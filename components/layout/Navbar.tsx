@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,12 +30,12 @@ export function Navbar() {
       >
         <div className="max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-12 flex items-center justify-between">
           
-          {/* Left: Vercel Triangle Logo + Navigation Links */}
+          {/* Left: Vercel-Style Klyph Triangle Logo + Name */}
           <div className="flex items-center gap-8">
             <button
               onClick={() => scrollTo("home")}
-              aria-label="Home"
-              className="flex items-center gap-2 group cursor-pointer"
+              aria-label="Klyph Home"
+              className="flex items-center gap-2.5 group cursor-pointer"
             >
               <svg
                 width="22"
@@ -48,67 +47,38 @@ export function Navbar() {
               >
                 <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="white" />
               </svg>
+              <span className="font-sans font-bold text-lg tracking-tight text-white flex items-center">
+                klyph
+                <span className="w-1.5 h-1.5 rounded-full bg-white ml-1 mb-0.5 animate-pulse" />
+              </span>
             </button>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-7">
-              <div
-                className="relative"
-                onMouseEnter={() => setActiveDropdown("products")}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button
-                  onClick={() => scrollTo("agent-showcase")}
-                  className="flex items-center gap-1 text-[13px] text-zinc-400 hover:text-white transition-colors py-1 cursor-pointer"
-                >
-                  Products
-                  <svg className="w-3.5 h-3.5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </button>
-                {activeDropdown === "products" && (
-                  <div className="absolute top-full left-0 mt-2 w-52 p-2 bg-[#0d0d0d] border border-white/10 rounded-xl shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-top-1 duration-150">
-                    <button
-                      onClick={() => scrollTo("agent-showcase")}
-                      className="w-full text-left px-3 py-2 text-xs text-zinc-300 hover:text-white hover:bg-white/[0.06] rounded-lg transition-colors"
-                    >
-                      <div className="font-medium text-white">AI Gateway</div>
-                      <div className="text-[11px] text-zinc-500">Universal model orchestration</div>
-                    </button>
-                    <button
-                      onClick={() => scrollTo("agent-showcase")}
-                      className="w-full text-left px-3 py-2 text-xs text-zinc-300 hover:text-white hover:bg-white/[0.06] rounded-lg transition-colors"
-                    >
-                      <div className="font-medium text-white">Fluid Compute</div>
-                      <div className="text-[11px] text-zinc-500">Serverless microVM sandboxes</div>
-                    </button>
-                  </div>
-                )}
-              </div>
-
-              <div
-                className="relative"
-                onMouseEnter={() => setActiveDropdown("resources")}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button
-                  onClick={() => scrollTo("agent-infrastructure")}
-                  className="flex items-center gap-1 text-[13px] text-zinc-400 hover:text-white transition-colors py-1 cursor-pointer"
-                >
-                  Resources
-                  <svg className="w-3.5 h-3.5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </button>
-              </div>
-
               <button
-                onClick={() => scrollTo("agent-infrastructure")}
+                onClick={() => scrollTo("work")}
                 className="text-[13px] text-zinc-400 hover:text-white transition-colors py-1 cursor-pointer"
               >
-                Enterprise
+                Work
               </button>
-
+              <button
+                onClick={() => scrollTo("services")}
+                className="text-[13px] text-zinc-400 hover:text-white transition-colors py-1 cursor-pointer"
+              >
+                Services
+              </button>
+              <button
+                onClick={() => scrollTo("testimonials")}
+                className="text-[13px] text-zinc-400 hover:text-white transition-colors py-1 cursor-pointer"
+              >
+                Testimonials
+              </button>
+              <button
+                onClick={() => scrollTo("why-us")}
+                className="text-[13px] text-zinc-400 hover:text-white transition-colors py-1 cursor-pointer"
+              >
+                About
+              </button>
               <button
                 onClick={() => scrollTo("cta")}
                 className="text-[13px] text-zinc-400 hover:text-white transition-colors py-1 cursor-pointer"
@@ -118,28 +88,23 @@ export function Navbar() {
             </nav>
           </div>
 
-          {/* Right Actions: Get a Demo, Log In, Sign Up */}
+          {/* Right Actions */}
           <div className="flex items-center gap-2.5 sm:gap-3">
-            <button
-              onClick={() => scrollTo("cta")}
+            <a
+              href="mailto:outreach@klyphconnect.com"
               className="hidden sm:inline-flex items-center text-[13px] font-medium text-white/90 bg-white/[0.04] hover:bg-white/[0.08] border border-white/15 hover:border-white/25 px-3.5 py-1.5 rounded-full transition-all duration-150"
             >
-              Get a Demo
-            </button>
+              Get in Touch
+            </a>
 
-            <button
-              onClick={() => scrollTo("cta")}
-              className="hidden md:inline-flex items-center text-[13px] font-medium text-zinc-400 hover:text-white px-3 py-1.5 transition-colors"
-            >
-              Log In
-            </button>
-
-            <button
-              onClick={() => scrollTo("cta")}
+            <a
+              href="https://cal.com/klyph/strategic-consultation"
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center text-[13px] font-semibold text-black bg-white hover:bg-zinc-200 px-4 py-1.5 rounded-full transition-all duration-150 shadow-sm active:scale-95"
             >
-              Sign Up
-            </button>
+              Book Consultation
+            </a>
 
             {/* Mobile Hamburger */}
             <button
@@ -165,22 +130,28 @@ export function Navbar() {
         <div className="fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl md:hidden pt-24 px-6 flex flex-col justify-between pb-10">
           <div className="flex flex-col space-y-5 text-lg font-medium">
             <button
-              onClick={() => scrollTo("agent-showcase")}
+              onClick={() => scrollTo("work")}
               className="text-left text-zinc-300 hover:text-white py-2 border-b border-white/10"
             >
-              Products
+              Work
             </button>
             <button
-              onClick={() => scrollTo("agent-infrastructure")}
+              onClick={() => scrollTo("services")}
               className="text-left text-zinc-300 hover:text-white py-2 border-b border-white/10"
             >
-              Resources
+              Services
             </button>
             <button
-              onClick={() => scrollTo("agent-infrastructure")}
+              onClick={() => scrollTo("testimonials")}
               className="text-left text-zinc-300 hover:text-white py-2 border-b border-white/10"
             >
-              Enterprise
+              Testimonials
+            </button>
+            <button
+              onClick={() => scrollTo("why-us")}
+              className="text-left text-zinc-300 hover:text-white py-2 border-b border-white/10"
+            >
+              About
             </button>
             <button
               onClick={() => scrollTo("cta")}
@@ -191,18 +162,20 @@ export function Navbar() {
           </div>
 
           <div className="flex flex-col gap-3 pt-6 border-t border-white/10">
-            <button
-              onClick={() => scrollTo("cta")}
+            <a
+              href="mailto:outreach@klyphconnect.com"
               className="w-full text-center text-sm font-medium py-3 rounded-full bg-white/[0.06] border border-white/15 text-white"
             >
-              Get a Demo
-            </button>
-            <button
-              onClick={() => scrollTo("cta")}
+              Get in Touch
+            </a>
+            <a
+              href="https://cal.com/klyph/strategic-consultation"
+              target="_blank"
+              rel="noreferrer"
               className="w-full text-center text-sm font-semibold py-3 rounded-full bg-white text-black"
             >
-              Sign Up
-            </button>
+              Book Consultation
+            </a>
           </div>
         </div>
       )}

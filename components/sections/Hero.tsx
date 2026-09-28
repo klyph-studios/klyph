@@ -1,11 +1,14 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import { VercelTriangle } from "@/components/ui/VercelTriangle";
+import { KLYPH_DATA } from "@/lib/data";
 
 export function Hero() {
-  const scrollToDemo = () => {
-    document.getElementById("agent-showcase")?.scrollIntoView({ behavior: "smooth" });
+  const h = KLYPH_DATA.hero;
+
+  const scrollToWork = () => {
+    document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const scrollToContact = () => {
@@ -30,25 +33,38 @@ export function Hero() {
           
           {/* Left Column: Bold Typography & Action Buttons */}
           <div className="lg:col-span-5 flex flex-col justify-center text-left">
-            <h1 className="font-sans font-semibold text-5xl sm:text-6xl md:text-7xl lg:text-[5.2rem] leading-[1.03] tracking-[-0.035em] text-white">
-              Agentic
-              <span className="block mt-1 sm:mt-2 text-white">Infrastructure</span>
+            
+            {/* Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs text-zinc-300 w-fit mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>{h.badge}</span>
+            </div>
+
+            <h1 className="font-sans font-semibold text-4xl sm:text-6xl md:text-7xl lg:text-[4.75rem] leading-[1.04] tracking-[-0.035em] text-white">
+              {h.line1}
+              <span className="block mt-1 sm:mt-2 text-zinc-400">{h.line2}</span>
             </h1>
+
+            <p className="mt-6 text-sm sm:text-base text-zinc-400 max-w-lg leading-relaxed font-normal">
+              {h.sub}
+            </p>
 
             <div className="flex items-center gap-3 mt-8 sm:mt-10">
               <button
-                onClick={scrollToDemo}
+                onClick={scrollToWork}
                 className="bg-white hover:bg-zinc-200 text-black font-semibold text-sm px-6 py-2.5 rounded-full transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:scale-[1.02] active:scale-[0.98]"
               >
-                Deploy now
+                Explore Work →
               </button>
 
-              <button
-                onClick={scrollToContact}
+              <a
+                href="https://cal.com/klyph/strategic-consultation"
+                target="_blank"
+                rel="noreferrer"
                 className="bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/15 font-medium text-sm px-6 py-2.5 rounded-full transition-all duration-200 hover:border-white/25 active:scale-[0.98]"
               >
-                Talk to sales
-              </button>
+                Book Consultation
+              </a>
             </div>
           </div>
 
@@ -57,12 +73,19 @@ export function Hero() {
             <VercelTriangle />
           </div>
 
-          {/* Right Column: Crisp 3-Line Proposition */}
+          {/* Right Column: Crisp 3-Line Metrics */}
           <div className="lg:col-span-3 flex flex-col justify-center lg:items-end text-left lg:text-left">
-            <div className="space-y-2.5 sm:space-y-3 text-zinc-400 font-normal text-base sm:text-lg leading-snug tracking-tight">
-              <p className="hover:text-zinc-200 transition-colors cursor-default">For coding agents</p>
-              <p className="hover:text-zinc-200 transition-colors cursor-default">To ship apps and agents</p>
-              <p className="hover:text-zinc-200 transition-colors cursor-default">Automated by agents</p>
+            <div className="space-y-4 sm:space-y-5 text-zinc-400 font-normal leading-snug tracking-tight">
+              {h.metrics.map((m, i) => (
+                <div key={i} className="group cursor-default">
+                  <div className="font-sans font-bold text-2xl sm:text-3xl text-white tracking-tight group-hover:text-zinc-200 transition-colors">
+                    {m.val}
+                  </div>
+                  <div className="text-xs sm:text-sm text-zinc-500 mt-0.5">
+                    {m.lbl}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 

@@ -1,170 +1,124 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@/hooks/useGSAP";
+import React, { useState } from "react";
 import { KLYPH_DATA, ProjectItem } from "@/lib/data";
 
 interface PortfolioProps {
-  onOpenModal: (id: string) => void;
+  onOpenModal?: (id: string) => void;
 }
 
-export function Portfolio({ onOpenModal }: PortfolioProps) {
+export function Portfolio({}: PortfolioProps) {
   const projects = KLYPH_DATA.projects;
   const [filter, setFilter] = useState("All");
-  const containerRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
 
-  const cats = ["All", ...Array.from(new Set(projects.map((p) => p.cat)))];
-  const visible = filter === "All" ? projects : projects.filter((p) => p.cat === filter);
-
-  /*
-   * GSAP ScrollTrigger Animation Setup for Portfolio Items
-   * Adds smooth entrance animation and interactive hover scale.
-   */
-  useGSAP(
-    () => {
-      if (!gridRef.current) return;
-      const items = gridRef.current.querySelectorAll(".port-item");
-
-      gsap.fromTo(
-        items,
-        { opacity: 0, y: 30, scale: 0.96 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.7,
-          stagger: 0.12,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: "top 75%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    },
-    [filter],
-    containerRef
-  );
+  const categories = ["All", ...Array.from(new Set(projects.map((p) => p.cat)))];
+  const filtered = filter === "All" ? projects : projects.filter((p) => p.cat === filter);
 
   return (
-    <section id="work" className="section sec-light py-20 sm:py-32 bg-white text-black border-t border-b border-black/10" ref={containerRef}>
-      <div className="container mx-auto px-4 sm:px-8 max-w-[1240px]">
-        <div className="flex flex-wrap justify-between items-center mb-8 sm:mb-12 gap-6">
+    <section id="work" className="relative py-24 sm:py-32 bg-black text-white overflow-hidden border-t border-white/[0.08]">
+      
+      {/* Background ambient lighting */}
+      <div
+        className="pointer-events-none absolute top-1/4 right-0 w-[500px] h-[400px] opacity-10"
+        style={{
+          background: "radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%)",
+          filter: "blur(100px)",
+        }}
+      />
+
+      <div className="max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
+        
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div>
-            <div className="section-tag flex items-center gap-3 font-syne text-xs font-bold tracking-[0.25em] uppercase text-zinc-500 mb-3 sm:mb-4">
-              <span className="w-7 h-[1px] bg-zinc-400 block" />
-              Portfolio & Case Studies
-              <span className="w-1.5 h-1.5 rounded-full bg-black block" />
+            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-zinc-500 mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+              Selected Portfolio
             </div>
-            <h2 className="headline font-syne font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-black">
-              Work We're <span className="hi bg-gradient-to-b from-black to-zinc-600 bg-clip-text text-transparent">Proud Of</span>
+            <h2 className="font-sans font-semibold text-3xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-[-0.035em] text-white">
+              Work that moves markets
             </h2>
           </div>
-          <button
-            className="btn btn-ghost text-xs font-bold uppercase tracking-widest px-6 py-3.5 rounded border border-black/20 text-black hover:bg-black hover:text-white transition-all"
-            onClick={() => document.getElementById("cta")?.scrollIntoView({ behavior: "smooth" })}
+
+          <a
+            href="https://cal.com/klyph/strategic-consultation"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center text-xs uppercase tracking-widest font-semibold text-white/90 bg-white/[0.04] hover:bg-white/[0.08] border border-white/15 px-5 py-2.5 rounded-full transition-all w-fit"
           >
             Start a Project →
-          </button>
+          </a>
         </div>
 
-        {/* Filter Category Pills */}
-        <div className="port-filters flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-12">
-          {cats.map((c) => (
+        {/* Filter Pills */}
+        <div className="flex flex-wrap items-center gap-2 mb-10 sm:mb-12">
+          {categories.map((cat) => (
             <button
-              key={c}
-              className={`flt-btn text-[11px] sm:text-xs font-bold font-syne px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all border ${
-                filter === c ? "bg-black text-white border-black shadow-md" : "bg-zinc-100 text-zinc-600 border-black/10 hover:border-black/30"
+              key={cat}
+              onClick={() => setFilter(cat)}
+              className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
+                filter === cat
+                  ? "bg-white text-black font-semibold shadow-sm"
+                  : "bg-white/[0.04] border border-white/10 text-zinc-400 hover:text-white hover:border-white/20"
               }`}
-              onClick={() => setFilter(c)}
             >
-              {c}
+              {cat}
             </button>
           ))}
         </div>
 
-        {/* Portfolio Cards Grid */}
-        <div className="port-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" ref={gridRef}>
-          {visible.map((p) => (
+        {/* Project Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+          {filtered.map((item) => (
             <div
-              key={p.id}
-              className="port-item group bg-white border border-black/10 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl hover:border-black transition-all duration-400 flex flex-col justify-between"
-              onClick={() => onOpenModal(p.id)}
+              key={item.id}
+              className="relative rounded-2xl bg-[#080808] border border-white/[0.1] hover:border-white/25 p-7 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
             >
+              {/* Card Header */}
               <div>
-                <div className="port-thumb h-64 bg-zinc-950 flex items-center justify-center relative overflow-hidden text-6xl">
-                  <span className="group-hover:scale-125 transition-transform duration-500">{p.emoji}</span>
-                  <div className="port-ov absolute inset-0 bg-black/85 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <div className="port-ov-ttl font-syne font-bold text-white text-lg mb-2">{p.name}</div>
-                    <p className="text-zinc-400 text-xs line-clamp-2 mb-4">{p.desc}</p>
-                    <div className="flex items-center gap-3">
-                      {p.liveUrl && (
-                        <a
-                          href={p.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs font-syne font-bold px-4 py-2 rounded bg-white text-black hover:bg-zinc-200 transition-all uppercase tracking-wider"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          Live Site ↗
-                        </a>
-                      )}
-                      <button
-                        className="text-xs font-bold font-syne text-white uppercase tracking-wider underline underline-offset-4"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onOpenModal(p.id);
-                        }}
-                      >
-                        Case Study →
-                      </button>
-                    </div>
-                  </div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-2xl">{item.emoji}</span>
+                  <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/[0.06] border border-white/10 text-zinc-400">
+                    {item.cat}
+                  </span>
                 </div>
 
-                <div className="port-meta p-6 bg-zinc-50 border-t border-black/10">
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <div className="port-tags text-[11px] font-bold uppercase tracking-wider text-zinc-500">
-                      {p.tags}
-                    </div>
-                    {p.liveUrl && (
-                      <span className="flex items-center gap-1.5 text-[10px] font-syne font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                        Live
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="port-name font-syne font-extrabold text-xl text-black mb-3">{p.name}</h3>
-                  <p className="text-zinc-600 text-xs line-clamp-2 mb-4">{p.desc}</p>
-                </div>
+                <h3 className="font-sans text-xl font-semibold tracking-tight text-white mb-2 group-hover:text-white transition-colors">
+                  {item.name}
+                </h3>
+
+                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-6">
+                  {item.desc}
+                </p>
               </div>
 
-              <div className="p-6 pt-0 bg-zinc-50">
-                <div className="port-results text-xs font-medium text-black bg-zinc-200/60 p-3 rounded-lg border border-black/5 mb-4">
-                  {p.results}
-                </div>
-                
-                {p.liveUrl && (
-                  <div className="flex items-center justify-between gap-3 pt-2">
-                    <a
-                      href={p.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-syne font-bold text-black hover:text-zinc-600 flex items-center gap-1.5 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      Visit Live Platform ↗
-                    </a>
-                    <span className="text-xs text-zinc-400 font-syne">View Details →</span>
+              {/* Card Footer: Results & Live Link */}
+              <div className="pt-5 border-t border-white/[0.06]">
+                <div className="mb-4">
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 mb-1">
+                    Key Results
                   </div>
+                  <div className="text-xs font-medium text-emerald-400">
+                    {item.results}
+                  </div>
+                </div>
+
+                {item.liveUrl && (
+                  <a
+                    href={item.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/80 hover:text-white group-hover:translate-x-0.5 transition-all"
+                  >
+                    <span>Visit Live Architecture</span>
+                    <span className="text-xs">↗</span>
+                  </a>
                 )}
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
