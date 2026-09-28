@@ -8,6 +8,7 @@ import { CompanyMarquee } from "@/components/sections/CompanyMarquee";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { AgentShowcase } from "@/components/sections/AgentShowcase";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { PricingSection } from "@/components/sections/PricingSection";
 import { ScaleBento } from "@/components/sections/ScaleBento";
 import { CTA } from "@/components/sections/CTA";
 
@@ -19,6 +20,7 @@ export default function Home() {
       <CompanyMarquee />
       <Portfolio />
       <AgentShowcase />
+      <PricingSection />
       <Testimonials />
       <ScaleBento />
       <CTA />

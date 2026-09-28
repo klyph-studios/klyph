@@ -1,10 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,10 +17,20 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const handleNavClick = (sectionId: string, pageHref: string) => {
+    if (pathname === "/") {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    }
     setMobileMenuOpen(false);
   };
+
+  const navLinks = [
+    { label: "Work", sectionId: "work", href: "/work" },
+    { label: "Services", sectionId: "services", href: "/services" },
+    { label: "Pricing", sectionId: "pricing", href: "/pricing" },
+    { label: "Testimonials", sectionId: "testimonials", href: "/#testimonials" },
+    { label: "Contact", sectionId: "cta", href: "/contact" },
+  ];
 
   return (
     <>
@@ -32,8 +45,8 @@ export function Navbar() {
           
           {/* Left: Vercel-Style Klyph Triangle Logo + Name */}
           <div className="flex items-center gap-8">
-            <button
-              onClick={() => scrollTo("home")}
+            <Link
+              href="/"
               aria-label="Klyph Home"
               className="flex items-center gap-2.5 group cursor-pointer"
             >
@@ -51,51 +64,35 @@ export function Navbar() {
                 klyph
                 <span className="w-1.5 h-1.5 rounded-full bg-white ml-1 mb-0.5 animate-pulse" />
               </span>
-            </button>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-7">
-              <button
-                onClick={() => scrollTo("work")}
-                className="text-[13px] text-zinc-400 hover:text-white transition-colors py-1 cursor-pointer"
-              >
-                Work
-              </button>
-              <button
-                onClick={() => scrollTo("services")}
-                className="text-[13px] text-zinc-400 hover:text-white transition-colors py-1 cursor-pointer"
-              >
-                Services
-              </button>
-              <button
-                onClick={() => scrollTo("testimonials")}
-                className="text-[13px] text-zinc-400 hover:text-white transition-colors py-1 cursor-pointer"
-              >
-                Testimonials
-              </button>
-              <button
-                onClick={() => scrollTo("why-us")}
-                className="text-[13px] text-zinc-400 hover:text-white transition-colors py-1 cursor-pointer"
-              >
-                About
-              </button>
-              <button
-                onClick={() => scrollTo("cta")}
-                className="text-[13px] text-zinc-400 hover:text-white transition-colors py-1 cursor-pointer"
-              >
-                Pricing
-              </button>
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={pathname === "/" ? `#${link.sectionId}` : link.href}
+                  onClick={() => handleNavClick(link.sectionId, link.href)}
+                  className={`text-[13px] py-1 cursor-pointer transition-colors ${
+                    pathname === link.href
+                      ? "text-white font-medium"
+                      : "text-zinc-400 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </nav>
           </div>
 
           {/* Right Actions */}
           <div className="flex items-center gap-2.5 sm:gap-3">
-            <a
-              href="mailto:outreach@klyphconnect.com"
+            <Link
+              href="/contact"
               className="hidden sm:inline-flex items-center text-[13px] font-medium text-white/90 bg-white/[0.04] hover:bg-white/[0.08] border border-white/15 hover:border-white/25 px-3.5 py-1.5 rounded-full transition-all duration-150"
             >
               Get in Touch
-            </a>
+            </Link>
 
             <a
               href="https://cal.com/klyph/strategic-consultation"
@@ -129,45 +126,29 @@ export function Navbar() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl md:hidden pt-24 px-6 flex flex-col justify-between pb-10">
           <div className="flex flex-col space-y-5 text-lg font-medium">
-            <button
-              onClick={() => scrollTo("work")}
-              className="text-left text-zinc-300 hover:text-white py-2 border-b border-white/10"
-            >
-              Work
-            </button>
-            <button
-              onClick={() => scrollTo("services")}
-              className="text-left text-zinc-300 hover:text-white py-2 border-b border-white/10"
-            >
-              Services
-            </button>
-            <button
-              onClick={() => scrollTo("testimonials")}
-              className="text-left text-zinc-300 hover:text-white py-2 border-b border-white/10"
-            >
-              Testimonials
-            </button>
-            <button
-              onClick={() => scrollTo("why-us")}
-              className="text-left text-zinc-300 hover:text-white py-2 border-b border-white/10"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollTo("cta")}
-              className="text-left text-zinc-300 hover:text-white py-2 border-b border-white/10"
-            >
-              Pricing
-            </button>
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={pathname === "/" ? `#${link.sectionId}` : link.href}
+                onClick={() => {
+                  handleNavClick(link.sectionId, link.href);
+                  setMobileMenuOpen(false);
+                }}
+                className="text-left text-zinc-300 hover:text-white py-2 border-b border-white/10"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
           <div className="flex flex-col gap-3 pt-6 border-t border-white/10">
-            <a
-              href="mailto:outreach@klyphconnect.com"
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
               className="w-full text-center text-sm font-medium py-3 rounded-full bg-white/[0.06] border border-white/15 text-white"
             >
               Get in Touch
-            </a>
+            </Link>
             <a
               href="https://cal.com/klyph/strategic-consultation"
               target="_blank"
