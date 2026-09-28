@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Agentic Infrastructure — Built for Autonomous Agents",
-  description: "Durable orchestration, sandboxed microVM environments, and universal AI gateway to build and ship coding agents.",
+  title: "Klyph — Ultra-Premium Web Architecture & AI Systems",
+  description: "Bespoke Next.js web architecture, GSAP kinetic motion, executive branding, and autonomous AI systems engineered for market leaders.",
 };
 
 export default function RootLayout({
