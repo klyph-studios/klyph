@@ -1,49 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { IntroLoader } from "@/components/layout/IntroLoader";
 import { Hero } from "@/components/sections/Hero";
-import { Marquee } from "@/components/sections/Marquee";
-import { Services } from "@/components/sections/Services";
-import { AiSolutions } from "@/components/sections/AiSolutions";
-import { WhatWeOffer } from "@/components/sections/WhatWeOffer";
-import { Portfolio } from "@/components/sections/Portfolio";
-import { Testimonials } from "@/components/sections/Testimonials";
 import { CompanyMarquee } from "@/components/sections/CompanyMarquee";
-import { WhyUs } from "@/components/sections/WhyUs";
+import { AgentShowcase } from "@/components/sections/AgentShowcase";
+import { ScaleBento } from "@/components/sections/ScaleBento";
 import { CTA } from "@/components/sections/CTA";
-import { CaseStudyModal } from "@/components/ui/CaseStudyModal";
-import { Cursor } from "@/components/ui/Cursor";
-import { KLYPH_DATA, ProjectItem } from "@/lib/data";
 
 export default function Home() {
-  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
-
-  const selectedProject: ProjectItem | null =
-    KLYPH_DATA.projects.find((p) => p.id === selectedProjectId) || null;
-
   return (
-    <main className="min-h-screen bg-black text-white relative">
-      <IntroLoader />
-      <Cursor />
+    <main className="min-h-screen bg-black text-white relative selection:bg-white selection:text-black overflow-hidden font-sans">
       <Navbar />
-      
       <Hero />
-      <Marquee />
-      <Services onOpenModal={(id) => setSelectedProjectId(id)} />
-      <WhatWeOffer />
-      <AiSolutions />
-      <Portfolio onOpenModal={(id) => setSelectedProjectId(id)} />
-      <Testimonials />
       <CompanyMarquee />
-      <WhyUs />
+      <AgentShowcase />
+      <ScaleBento />
       <CTA />
-
       <Footer />
-
-      <CaseStudyModal project={selectedProject} onClose={() => setSelectedProjectId(null)} />
     </main>
   );
 }

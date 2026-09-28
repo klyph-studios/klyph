@@ -1,25 +1,17 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/animations/SmoothScroll";
 
-const outfit = Outfit({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-heading",
-  display: "swap",
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-sans",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Klyph — Ultra-Premium Digital Studio",
-  description: "Bespoke Next.js web architecture, GSAP + ScrollTrigger scroll animations, Lenis smooth scrolling, personal branding, and autonomous AI systems.",
+  title: "Agentic Infrastructure — Built for Autonomous Agents",
+  description: "Durable orchestration, sandboxed microVM environments, and universal AI gateway to build and ship coding agents.",
 };
 
 export default function RootLayout({
@@ -28,9 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="dark" className={`${outfit.variable} ${plusJakarta.variable}`}>
-      <body className="antialiased selection:bg-white selection:text-black">
-        {/* Lenis Smooth Scroll & GSAP Synchronization Wrapper */}
+    <html lang="en" data-theme="dark" className={inter.variable}>
+      <body className="bg-black text-white font-sans antialiased selection:bg-white selection:text-black">
         <SmoothScroll>
           {children}
         </SmoothScroll>

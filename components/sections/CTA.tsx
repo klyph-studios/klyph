@@ -1,40 +1,45 @@
 "use client";
 
-import { KLYPH_DATA } from "@/lib/data";
+import React from "react";
 
 export function CTA() {
-  const cta = KLYPH_DATA.cta;
-  const go = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
-    <section id="cta" className="section sec-light py-20 sm:py-32 bg-white text-black border-t border-b border-black/10">
-      <div className="container mx-auto px-4 sm:px-8 max-w-[1240px]">
-        <div className="cta-box bg-gradient-to-br from-zinc-950 to-black text-white rounded-3xl p-8 sm:p-16 border border-white/10 relative overflow-hidden shadow-2xl">
-          <div className="cta-cnt max-w-2xl relative z-10">
-            <h2 className="cta-ttl font-syne font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-tight mb-4 sm:mb-6">
-              {cta.line1}
-              <br />
-              <span className="hi bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">{cta.line2}</span>
-            </h2>
-            <p className="cta-sub text-zinc-400 text-xs sm:text-base leading-relaxed mb-8 sm:mb-10">{cta.sub}</p>
+    <section id="cta" className="relative py-28 sm:py-36 bg-black text-white overflow-hidden border-t border-white/[0.08]">
+      {/* Ambient radial glow */}
+      <div
+        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] opacity-20"
+        style={{
+          background: "radial-gradient(ellipse at center bottom, rgba(255,255,255,0.25) 0%, transparent 70%)",
+        }}
+      />
 
-            <div className="cta-btns flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <a
-                href="https://cal.com/klyph/strategic-consultation"
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-primary text-xs uppercase font-bold tracking-widest px-8 py-3.5 sm:py-4 rounded bg-white text-black hover:bg-zinc-200 transition-all text-center shadow-lg"
-              >
-                Schedule Consultation →
-              </a>
-              <button
-                className="btn btn-ghost text-xs uppercase font-bold tracking-widest px-8 py-3.5 sm:py-4 rounded border border-white/20 text-white hover:bg-white/10 transition-all text-center"
-                onClick={() => go("work")}
-              >
-                View Our Work
-              </button>
-            </div>
-          </div>
+      <div className="max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-12 text-center relative z-10">
+        <h2 className="font-sans font-semibold text-4xl sm:text-6xl lg:text-7xl tracking-[-0.035em] text-white max-w-3xl mx-auto leading-[1.05]">
+          Ready to deploy your agents?
+        </h2>
+
+        <p className="mt-5 text-base sm:text-lg text-zinc-400 max-w-xl mx-auto leading-relaxed">
+          Connect your repository to build, test, and scale autonomous agent infrastructure worldwide in seconds.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mt-9">
+          <button
+            onClick={scrollToTop}
+            className="w-full sm:w-auto bg-white hover:bg-zinc-200 text-black font-semibold text-sm px-7 py-3 rounded-full transition-all duration-200 shadow-[0_0_30px_rgba(255,255,255,0.25)] hover:scale-[1.02] active:scale-[0.98]"
+          >
+            Deploy now
+          </button>
+
+          <a
+            href="mailto:sales@klyph.io"
+            className="w-full sm:w-auto bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/15 font-medium text-sm px-7 py-3 rounded-full transition-all duration-200 hover:border-white/25 active:scale-[0.98] text-center"
+          >
+            Talk to sales
+          </a>
         </div>
       </div>
     </section>

@@ -1,29 +1,51 @@
 "use client";
 
-import { KLYPH_DATA } from "@/lib/data";
+import React from "react";
+import {
+  LogoBlackbox,
+  LogoCharlesSchwab,
+  LogoDoorDash,
+  LogoOpenAI,
+  LogoSupreme,
+  LogoWeatherCompany,
+  LogoPolymarket,
+  LogoNotion,
+} from "@/components/ui/BrandLogos";
 
 export function CompanyMarquee() {
-  const companies = KLYPH_DATA.companies;
-  const doubled = [...companies, ...companies];
+  const logos = [
+    { id: "blackbox", Component: LogoBlackbox },
+    { id: "schwab", Component: LogoCharlesSchwab },
+    { id: "doordash", Component: LogoDoorDash },
+    { id: "openai", Component: LogoOpenAI },
+    { id: "supreme", Component: LogoSupreme },
+    { id: "weather", Component: LogoWeatherCompany },
+    { id: "polymarket", Component: LogoPolymarket },
+    { id: "notion", Component: LogoNotion },
+  ];
+
+  const repeated = [...logos, ...logos, ...logos];
 
   return (
-    <section className="section sec-light py-16 bg-white text-black border-t border-b border-black/10 overflow-hidden">
-      <div className="container mx-auto px-8 max-w-[1240px] text-center mb-8">
-        <p className="font-syne text-xs font-bold text-zinc-500 tracking-[0.2em] uppercase">
-          Trusted by industry pioneers across North America & Europe
-        </p>
-      </div>
+    <section className="relative py-12 sm:py-16 bg-black overflow-hidden border-t border-b border-white/[0.08]">
+      {/* Edge gradient masks for seamless fade */}
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 sm:w-40 z-10 bg-gradient-to-r from-black to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 sm:w-40 z-10 bg-gradient-to-l from-black to-transparent" />
 
-      <div className="co-wrap overflow-hidden">
-        <div className="co-track flex gap-8 animate-marquee w-max">
-          {doubled.map((c, i) => (
-            <div key={i} className="co-pill bg-zinc-100 border border-black/10 rounded-full px-6 py-3 flex items-center gap-3 shrink-0">
-              <div className="co-logo w-7 h-7 rounded-full bg-black text-white font-syne font-bold text-xs flex items-center justify-center">
-                {c.init}
+      {/* Marquee Track */}
+      <div className="flex overflow-hidden select-none">
+        <div className="flex items-center gap-12 sm:gap-20 shrink-0 animate-marquee hover:[animation-play-state:paused] py-2">
+          {repeated.map((item, index) => {
+            const Logo = item.Component;
+            return (
+              <div
+                key={`${item.id}-${index}`}
+                className="opacity-70 hover:opacity-100 transition-opacity duration-300 cursor-pointer shrink-0"
+              >
+                <Logo />
               </div>
-              <span className="co-name font-syne font-bold text-xs uppercase tracking-wider text-black">{c.name}</span>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

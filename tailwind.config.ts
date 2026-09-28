@@ -23,15 +23,15 @@ const config: Config = {
         },
       },
       fontFamily: {
-        heading: ["var(--font-heading)", "Outfit", "system-ui", "sans-serif"],
-        syne: ["var(--font-heading)", "Outfit", "system-ui", "sans-serif"],
-        sans: ["var(--font-sans)", "Plus Jakarta Sans", "system-ui", "sans-serif"],
+        heading: ["var(--font-sans)", "Inter", "system-ui", "-apple-system", "sans-serif"],
+        syne: ["var(--font-sans)", "Inter", "system-ui", "-apple-system", "sans-serif"],
+        sans: ["var(--font-sans)", "Inter", "system-ui", "-apple-system", "sans-serif"],
       },
       animation: {
         "spin-slow": "spin 25s linear infinite",
         "spin-reverse": "spin 18s linear infinite reverse",
         float: "float 7s ease-in-out infinite",
-        marquee: "mqanim 25s linear infinite",
+        marquee: "mqanim 30s linear infinite",
       },
       keyframes: {
         float: {
@@ -39,7 +39,8 @@ const config: Config = {
           "50%": { transform: "translateY(-14px)" },
         },
         mqanim: {
-          to: { transform: "translateX(-50%)" },
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
     },
