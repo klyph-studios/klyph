@@ -179,7 +179,7 @@ export function AgentShowcase() {
 
                 {/* Bottom Prompt Bar */}
                 <div className="rounded-xl bg-[#020202] border border-white/[0.12] p-2.5 flex items-center gap-2">
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/[0.08] border border-white/10 text-xs text-white">
+                  <div className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/[0.08] border border-white/10 text-xs text-white shrink-0">
                     <span className="text-zinc-500 font-mono">@</span>
                     <span className="text-zinc-300 font-medium">Klyph Studio</span>
                   </div>

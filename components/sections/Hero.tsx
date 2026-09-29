@@ -74,19 +74,17 @@ export function Hero() {
           </div>
 
           {/* Right Column: Crisp 3-Line Metrics */}
-          <div className="lg:col-span-3 flex flex-col justify-center lg:items-end text-left lg:text-left">
-            <div className="space-y-4 sm:space-y-5 text-zinc-400 font-normal leading-snug tracking-tight">
-              {h.metrics.map((m, i) => (
-                <div key={i} className="group cursor-default">
-                  <div className="font-sans font-bold text-2xl sm:text-3xl text-white tracking-tight group-hover:text-zinc-200 transition-colors">
-                    {m.val}
-                  </div>
-                  <div className="text-xs sm:text-sm text-zinc-500 mt-0.5">
-                    {m.lbl}
-                  </div>
+          <div className="lg:col-span-3 flex flex-row lg:flex-col justify-between sm:justify-start lg:justify-center gap-6 sm:gap-10 lg:gap-0 lg:space-y-5 text-left pt-6 lg:pt-0 border-t border-white/[0.08] lg:border-t-0">
+            {h.metrics.map((m, i) => (
+              <div key={i} className="group cursor-default">
+                <div className="font-sans font-bold text-2xl sm:text-3xl text-white tracking-tight group-hover:text-zinc-200 transition-colors">
+                  {m.val}
                 </div>
-              ))}
-            </div>
+                <div className="text-xs sm:text-sm text-zinc-500 mt-0.5">
+                  {m.lbl}
+                </div>
+              </div>
+            ))}
           </div>
 
         </div>
