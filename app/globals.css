@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  margin: 0;
+  padding: 0;
+}
+
+svg {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+}
+
 @layer base {
   *, *::before, *::after {
     box-sizing: border-box;

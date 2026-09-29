@@ -20,8 +20,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="dark" className={inter.variable}>
-      <body className="bg-black text-white font-sans antialiased selection:bg-white selection:text-black">
+    <html lang="en" data-theme="dark" className={inter.variable} style={{ backgroundColor: "#000000", color: "#ffffff" }}>
+      <body
+        className="bg-black text-white font-sans antialiased selection:bg-white selection:text-black min-h-screen"
+        style={{ backgroundColor: "#000000", color: "#ffffff", margin: 0 }}
+      >
         <SmoothScroll>
           {children}
         </SmoothScroll>
